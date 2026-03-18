@@ -1,12 +1,17 @@
-from vehicle import vehicle
+from vehicle import Vehicle
 
-class Cars(vehicle):
+class Cars(Vehicle):
     def __init__(self, reg, weight):
         super().__init__(reg, weight)
 
     def calculateFee(self):
-        fee = float(5)
-        while self.weight > 1590:
-            fee += 0.1
-            self.weight -= 100
-        return fee
+        feeWeight = self.weight - 1590
+        if feeWeight > 0:
+            feeWeight = feeWeight // 100
+            fee = 5 + (feeWeight / 10)
+            return fee
+        else:
+            return 5
+
+
+
