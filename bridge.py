@@ -9,9 +9,14 @@ class Bridge:
             totalWeight += vehicle.weight
         return totalWeight
 
-    def addVehicle(self, vehicle: object) -> None:
+    def addVehicle(self, vehicle: object) -> bool:
         if len(self.vehicle_list) < self.max_size:
+            if self.calcTotalWeight() + vehicle.weight > 30000:
+                return False
             self.vehicle_list.append(vehicle)
+            return True
+        else:
+            return False
 
     def removeVehicle(self, reg: str) -> bool:
         for vehicle in self.vehicle_list:

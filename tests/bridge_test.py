@@ -22,3 +22,10 @@ def test_bridge_remove_car():
     bridge.addVehicle(car2)
     bridge.removeVehicle("bcd")
     assert car2 not in bridge.vehicle_list
+
+def test_bridge_over_weight():
+    car1 = Cars("abc", 29000)
+    car2 = Cars("bcd", 2000)
+    bridge = Bridge()
+    bridge.addVehicle(car1)
+    assert bridge.addVehicle(car2) == False
